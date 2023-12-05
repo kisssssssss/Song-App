@@ -12,10 +12,27 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "paths": {
-      "*": ["node_modules/*"],
-      "@/*": ["./*"],
+      "*": [
+        "node_modules/*"
+      ],
+      "@/*": [
+        "./*"
+      ],
+      "@renderer/*": [
+        "./src/renderer/*"
+      ],
+      "@api/*": [
+        "./src/renderer/services/api/*"
+      ],
+      "@assets/*": [
+        "./src/renderer/assets/*"
+      ]
     },
     "jsx": "react-jsx"
   },
-  "include": ["src/**/*"]
+  "include": [
+    "src/**/*",
+    "src/renderer/@types/*",
+    "src/electron/@types/*"
+  ]
 }

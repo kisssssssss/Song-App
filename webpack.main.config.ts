@@ -13,6 +13,8 @@ export const mainConfig: Configuration = {
   resolve: {
     alias: {
       "@": resolve(__dirname, "src"),
+      "@renderer": resolve(__dirname, "src/renderer"),
+      "@api": resolve(__dirname, "src/renderer/services/api"),
     },
     extensions: [".js", ".ts", ".jsx", ".tsx", ".css", ".json"],
   },

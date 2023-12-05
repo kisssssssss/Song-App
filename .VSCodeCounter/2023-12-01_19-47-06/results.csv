@@ -1,0 +1,33 @@
+"filename", "language", "TypeScript JSX", "TypeScript", "CSS", "SVG", "comment", "blank", "total"
+"d:\Project\Song-App\src\electron\@types\global.d.ts", "TypeScript", 0, 7, 0, 0, 0, 1, 8
+"d:\Project\Song-App\src\electron\@types\ipc.d.ts", "TypeScript", 0, 10, 0, 0, 3, 1, 14
+"d:\Project\Song-App\src\electron\index.ts", "TypeScript", 0, 55, 0, 0, 3, 14, 72
+"d:\Project\Song-App\src\electron\ipc\constants.ts", "TypeScript", 0, 4, 0, 0, 0, 1, 5
+"d:\Project\Song-App\src\electron\ipc\expose.ts", "TypeScript", 0, 21, 0, 0, 0, 2, 23
+"d:\Project\Song-App\src\electron\ipc\listen.ts", "TypeScript", 0, 24, 0, 0, 4, 3, 31
+"d:\Project\Song-App\src\electron\preload.ts", "TypeScript", 0, 2, 0, 0, 0, 2, 4
+"d:\Project\Song-App\src\renderer\@types\global.d.ts", "TypeScript", 0, 4, 0, 0, 0, 1, 5
+"d:\Project\Song-App\src\renderer\@types\styled.d.ts", "TypeScript", 0, 4, 0, 0, 0, 2, 6
+"d:\Project\Song-App\src\renderer\assets\svg\index.tsx", "TypeScript JSX", 15, 0, 0, 0, 0, 5, 20
+"d:\Project\Song-App\src\renderer\assets\svg\list.svg", "SVG", 0, 0, 0, 9, 0, 0, 9
+"d:\Project\Song-App\src\renderer\assets\svg\maximize.svg", "SVG", 0, 0, 0, 4, 0, 0, 4
+"d:\Project\Song-App\src\renderer\assets\svg\song.svg", "SVG", 0, 0, 0, 15, 0, 0, 15
+"d:\Project\Song-App\src\renderer\components\Layout\index.tsx", "TypeScript JSX", 25, 0, 0, 0, 0, 3, 28
+"d:\Project\Song-App\src\renderer\components\SideBar\index.tsx", "TypeScript JSX", 53, 0, 0, 0, 0, 7, 60
+"d:\Project\Song-App\src\renderer\components\SideBar\styled.ts", "TypeScript", 0, 13, 0, 0, 0, 2, 15
+"d:\Project\Song-App\src\renderer\components\TitleBar\index.tsx", "TypeScript JSX", 26, 0, 0, 0, 10, 4, 40
+"d:\Project\Song-App\src\renderer\components\TitleBar\style.ts", "TypeScript", 0, 27, 0, 0, 0, 5, 32
+"d:\Project\Song-App\src\renderer\components\scrollBar\index.tsx", "TypeScript JSX", 58, 0, 0, 0, 1, 8, 67
+"d:\Project\Song-App\src\renderer\components\scrollBar\styled.ts", "TypeScript", 0, 23, 0, 0, 0, 2, 25
+"d:\Project\Song-App\src\renderer\index.tsx", "TypeScript JSX", 30, 0, 0, 0, 0, 6, 36
+"d:\Project\Song-App\src\renderer\page\home.tsx", "TypeScript JSX", 78, 0, 0, 0, 0, 3, 81
+"d:\Project\Song-App\src\renderer\page\styled.ts", "TypeScript", 0, 5, 0, 0, 0, 2, 7
+"d:\Project\Song-App\src\renderer\routes\index.tsx", "TypeScript JSX", 14, 0, 0, 0, 0, 4, 18
+"d:\Project\Song-App\src\renderer\services\api\index.ts", "TypeScript", 0, 6, 0, 0, 0, 2, 8
+"d:\Project\Song-App\src\renderer\services\request\index.ts", "TypeScript", 0, 6, 0, 0, 0, 2, 8
+"d:\Project\Song-App\src\renderer\store\index.ts", "TypeScript", 0, 8, 0, 0, 0, 3, 11
+"d:\Project\Song-App\src\renderer\store\module\data.ts", "TypeScript", 0, 10, 0, 0, 0, 4, 14
+"d:\Project\Song-App\src\renderer\style\base.css", "CSS", 0, 0, 16, 0, 0, 1, 17
+"d:\Project\Song-App\src\renderer\style\theme\index.ts", "TypeScript", 0, 126, 0, 0, 28, 4, 158
+"d:\Project\Song-App\src\renderer\utils\netease.ts", "TypeScript", 0, 2, 0, 0, 3, 2, 7
+"Total", "-", 299, 357, 16, 28, 52, 96, 848

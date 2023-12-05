@@ -12,12 +12,19 @@ export const rendererConfig: Configuration = {
         test: /\.css$/,
         use: [{ loader: "style-loader" }, { loader: "css-loader" }],
       },
+      {
+        test: /\.svg$/,
+        use: ["@svgr/webpack"],
+      },
     ],
   },
   plugins,
   resolve: {
     alias: {
       "@": resolve(__dirname, "src"),
+      "@renderer": resolve(__dirname, "src/renderer"),
+      "@api": resolve(__dirname, "src/renderer/services/api"),
+      "@assets": resolve(__dirname, "src/renderer/assets"),
     },
     extensions: [".js", ".ts", ".jsx", ".tsx", ".css"],
   },

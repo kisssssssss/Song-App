@@ -1,0 +1,23 @@
+{
+  "cSpell.words": [
+    "antd",
+    "asar",
+    "btns",
+    "cssnano",
+    "extralight",
+    "fmkadmapgofadopljbjfkapdkoienihi",
+    "immer",
+    "lmhkpmbekcpmknklioeibfkpmmfibljd",
+    "Maximizable",
+    "nextui",
+    "qrcode",
+    "reduxjs",
+    "relocator",
+    "Sider",
+    "svgr",
+    "tailwindcss",
+    "unmaximize",
+    "zustand"
+  ],
+  "css.lint.unknownAtRules": "ignore"
+}

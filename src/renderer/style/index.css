@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+i,
+span,
+svg {
+  user-select: none;
+}
+
+/* Electron-设置区域是否可以拖动 */
+.region {
+  -webkit-app-region: drag;
+}
+
+.no-region {
+  -webkit-app-region: no-drag;
+}
+
+/* 菜单栏高度 */
+.menu-height {
+  /* 菜单距离底部的距离 */
+  --b-height: 64px;
+
+  /* 菜单高度 = 100vh - 标题栏 - 距离底部的距离 */
+  height: calc(100vh - 40px - var(--b-height));
+
+  @media (min-width: 1024px) {
+    --b-height: 96px;
+  }
+}
+
+/* 菜单栏收缩时的宽度 */
+.menu-base-width {
+  --base-width: 70px;
+
+  width: var(--base-width);
+
+  @media (min-width: 1280px) {
+    --base-width: 78px;
+  }
+}
+
+
+/* 滚动的wrapper上下边缘内容虚化,通过animation的forwards属性实现 */
+.scroll-mask::before {
+  content: "";
+  animation: l-bottom .7s ease forwards;
+  @apply absolute left-0 right-0 top-0 z-10 h-4;
+}
+
+.scroll-mask::after {
+  content: "";
+  animation: l-top .7s ease forwards;
+  @apply absolute left-0 right-0 bottom-0 z-10 h-4;
+}
+
+@keyframes l-bottom {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    @apply bg-gradient-to-b from-[#E6E8EB];
+  }
+}
+
+@keyframes l-top {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    @apply bg-gradient-to-t from-[#E6E8EB];
+  }
+}
+
+.dark .scroll-mask::before {
+  animation-name: d-bottom;
+}
+
+.dark .scroll-mask::after {
+  animation-name: d-top;
+}
+
+@keyframes d-bottom {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    @apply bg-gradient-to-b from-[#191919];
+  }
+}
+
+@keyframes d-top {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    @apply bg-gradient-to-t from-[#191919];
+  }
+}
+
+.gray .scroll-mask::before {
+  animation-name: g-bottom;
+}
+
+.gray .scroll-mask::after {
+  animation-name: g-top;
+}
+
+@keyframes g-bottom {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    @apply bg-gradient-to-b from-[#424243];
+  }
+}
+
+@keyframes g-top {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    @apply bg-gradient-to-t from-[#424243];
+  }
+}
+
+/* 实现通知铃铛的左右摇晃 */
+.shake:hover {
+  animation-name: shakeAnimation;
+  transform-origin: center top;
+  animation-duration: 1.5s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  animation-delay: .2s;
+}
+
+@keyframes shakeAnimation {
+  0% {
+    transform: rotate(0deg);
+    transition-timing-function: cubic-bezier(0.215, .61, .355, 1);
+  }
+
+  10% {
+    transform: rotate(-12deg);
+    transition-timing-function: cubic-bezier(0.215, .61, .355, 1);
+  }
+
+  20% {
+    transform: rotate(12deg);
+    transition-timing-function: cubic-bezier(0.215, .61, .355, 1);
+  }
+
+  28% {
+    transform: rotate(-10deg);
+    transition-timing-function: cubic-bezier(0.215, .61, .355, 1);
+  }
+
+  36% {
+    transform: rotate(10deg);
+    transition-timing-function: cubic-bezier(0.755, .5, .855, .06);
+  }
+
+  42% {
+    transform: rotate(-8deg);
+    transition-timing-function: cubic-bezier(0.755, .5, .855, .06);
+  }
+
+  48% {
+    transform: rotate(8deg);
+    transition-timing-function: cubic-bezier(0.755, .5, .855, .06);
+  }
+
+  52% {
+    transform: rotate(-4deg);
+    transition-timing-function: cubic-bezier(0.755, .5, .855, .06);
+  }
+
+  56% {
+    transform: rotate(4deg);
+    transition-timing-function: cubic-bezier(0.755, .5, .855, .06);
+  }
+
+  60% {
+    transform: rotate(0deg);
+    transition-timing-function: cubic-bezier(0.755, .5, .855, .06);
+  }
+
+  100% {
+    transform: rotate(0deg);
+    transition-timing-function: cubic-bezier(0.215, .61, .355, 1);
+  }
+}

@@ -13,7 +13,7 @@ const App = memo(() => {
   initTheme();
 
   return (
-    <div className="flex h-screen w-screen flex-col bg-background text-foreground transition-colors duration-250 relative">
+    <div className="relative flex h-screen w-screen flex-col bg-background text-foreground transition-colors duration-250">
       <header className="region flex h-7 flex-nowrap items-center justify-end px-2 py-5">
         <TitleBar />
       </header>
@@ -21,7 +21,7 @@ const App = memo(() => {
         <SideBar />
         {useRoutes(routes)}
       </main>
-      {/* <Player /> */}
+      <Player />
     </div>
   );
 });

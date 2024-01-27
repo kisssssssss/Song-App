@@ -1,4 +1,5 @@
 import { app, session, BrowserWindow, Tray, Menu, nativeImage } from "electron";
+import installExtension, { REDUX_DEVTOOLS, REACT_DEVELOPER_TOOLS } from "electron-devtools-installer";
 import path from "node:path";
 import _ from "lodash";
 
@@ -18,8 +19,8 @@ const createWindow = (): void => {
   const win = new BrowserWindow({
     height: 700,
     width: 1024,
-    // minWidth: 1024,
-    // minHeight: 680,
+    minWidth: 800,
+    minHeight: 450,
     center: true,
     frame: false,
     icon: path.join(__dirname, "../../public/icon.png"),
@@ -28,7 +29,7 @@ const createWindow = (): void => {
     },
   });
 
-  ipcListen(win); 
+  ipcListen(win);
 
   win.webContents.openDevTools();
 
@@ -75,11 +76,15 @@ app
   })
   .then(async () => {
     // 添加 Redux DevTools 3.1.6
-    await session.defaultSession.loadExtension(
-      "C:\\Users\\23300\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Extensions\\lmhkpmbekcpmknklioeibfkpmmfibljd\\3.1.6_0",
-    );
+    // await session.defaultSession.loadExtension(
+    //   "C:\\Users\\23300\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Extensions\\lmhkpmbekcpmknklioeibfkpmmfibljd\\3.1.6_0",
+    // );
     // 添加 React Developer Tools -- https://github.com/facebook/react/issues/25843
-    await session.defaultSession.loadExtension("E:\\ReactDevTools-Manifest V2");
+    // await session.defaultSession.loadExtension("E:\\ReactDevTools-Manifest V2");
+
+    installExtension([REDUX_DEVTOOLS, REACT_DEVELOPER_TOOLS])
+      .then((name) => console.log(`添加扩展成功:  ${name}`))
+      .catch((err) => console.log("添加扩展错误: ", err));
   });
 
 app.on("window-all-closed", () => {

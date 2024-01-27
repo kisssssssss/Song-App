@@ -1,34 +1,6 @@
 import React, { memo, useEffect, useState, forwardRef } from "react";
+import type IconName from "./type";
 
-/** @description svg文件名 */
-export type IconName =
-  | "menuUnfold"
-  | "menuFold"
-  | "album"
-  | "close"
-  | "cloud"
-  | "list"
-  | "maximize"
-  | "minimize"
-  | "sun"
-  | "moon"
-  | "set"
-  | "song"
-  | "user"
-  | "netease"
-  | "notification"
-  | "qq"
-  | "theme"
-  | "add"
-  | "qrCode"
-  | "phone"
-  | "email"
-  | "eyeSlash"
-  | "eye"
-  | "play"
-  | "search"
-  | "left"
-  | "right";
 type sizeType = [string | number, string | number];
 
 type customProps = {
@@ -66,5 +38,7 @@ const Icon = (props: React.SVGProps<SVGSVGElement> & customProps, ref: React.For
     </svg>
   );
 };
+
+export { IconName };
 
 export default memo(forwardRef(Icon));

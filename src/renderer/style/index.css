@@ -31,31 +31,45 @@ svg {
 /* 菜单栏高度 */
 .menu-height {
   /* 菜单距离底部的距离 */
-  --b-height: 64px;
+  --base-height: 68px;
 
   /* 菜单高度 = 100vh - 标题栏 - 距离底部的距离 */
-  height: calc(100vh - 40px - var(--b-height));
+  height: calc(100vh - 40px - var(--base-height));
+}
+
+@media (min-width: 1024px) {
+  .menu-height {
+    --base-height: 84px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .menu-height {
+    --base-height: 100px;
+  }
 }
 
 /* 菜单栏收缩时的宽度 */
 .menu-base-width {
-  --base-width: 70px;
-
+  --base-width: 72px;
   width: var(--base-width);
+}
 
-  @media (min-width: 1280px) {
-    --base-width: 78px;
+@media (min-width: 1280px) {
+  .menu-base-width {
+    --base-width: 96px;
   }
 }
 
-/* 播放器 */
-.player {
-  --base-width: 70px;
+/* 播放器基本宽度 */
+.player-base-width {
+  --base-width: 72px;
+  width: var(--base-width);
+}
 
-  min-width: var(--base-width);
-
-  @media (min-width: 1280px) {
-    --base-width: 78px;
+@media (min-width: 1280px) {
+  .player-base-width {
+    --base-width: 96px;
   }
 }
 

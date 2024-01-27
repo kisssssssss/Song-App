@@ -1,7 +1,7 @@
 import { memo, useEffect, useState } from "react";
-import useStore from "../../store";
+import useStore from "store/index";
 import { Skeleton } from "@nextui-org/react";
-import { getQrKey, getQrBase64, checkQrStatus } from "../../service";
+import { getQrKey, getQrBase64, checkQrStatus } from "service/index";
 
 export default memo<{ close: Function }>(({ close }) => {
   // 骨架屏加载
@@ -14,16 +14,16 @@ export default memo<{ close: Function }>(({ close }) => {
   const saveCookie = useStore((state) => state.saveCookie);
 
   const create = async () => {
-    const { key } = await getQrKey();
+    const { key } = (await getQrKey()).data;
     if (key) {
-      const { img } = await getQrBase64(key);
+      const { img } = (await getQrBase64(key)).data;
       if (img) {
         // 显示二维码
         setImg(img);
         setIsLoaded(true);
         // 开启状态查询
         timer = setInterval(async () => {
-          const { code, cookie } = await checkQrStatus(key);
+          const { code, cookie } = (await checkQrStatus(key)).data;
           if (code == 803) {
             saveCookie(cookie);
             close();

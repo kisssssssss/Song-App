@@ -18,21 +18,27 @@
       "@/*": [
         "./*"
       ],
-      "@assets/*": [
+      "assets/*": [
         "./src/renderer/assets/*"
       ],
-      "@routes": [
+      "routes/*": [
         "./src/renderer/routes/*"
       ],
-      "@page": [
+      "page/*": [
         "./src/renderer/page/*"
       ],
-      "@component": [
-        "./src/renderer/component/*"
+      "components/*": [
+        "./src/renderer/components/*"
       ],
-      "@store": [
+      "store/*": [
         "./src/renderer/store/*"
       ],
+      "service/*": [
+        "./src/renderer/service/*"
+      ],
+      "utils/*": [
+        "./src/renderer/utils/*"
+      ]
     },
     "jsx": "react-jsx"
   },

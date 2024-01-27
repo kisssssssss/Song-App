@@ -1,6 +1,6 @@
 import React, { memo, useContext, useEffect, useRef } from "react";
 import { Tooltip } from "@nextui-org/react";
-import Icon, { IconName } from "@assets/icon";
+import Icon, { IconName } from "assets/icon";
 import classNames from "classnames";
 
 import Context from "./context";

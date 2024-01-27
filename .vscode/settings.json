@@ -19,5 +19,15 @@
     "unmaximize",
     "zustand"
   ],
-  "css.lint.unknownAtRules": "ignore"
+  "css.lint.unknownAtRules": "ignore",
+  "path-intellisense.mappings": {
+    "@": "${workspaceRoot}/src",
+    "components": "${workspaceRoot}/src/renderer/components",
+    "store": "${workspaceRoot}/src/renderer/store",
+    "page": "${workspaceRoot}/src/renderer/page",
+    "assets": "${workspaceRoot}/src/renderer/assets",
+    "routes": "${workspaceRoot}/src/renderer/routes",
+    "service": "${workspaceRoot}/src/renderer/service",
+    "utils":"${workspaceRoot}/src/renderer/utils"
+  },
 }

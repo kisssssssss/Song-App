@@ -22,7 +22,13 @@ export type IconName =
   | "add"
   | "qrCode"
   | "phone"
-  | "email"|"eyeSlash"|"eye";
+  | "email"
+  | "eyeSlash"
+  | "eye"
+  | "play"
+  | "search"
+  | "left"
+  | "right";
 type sizeType = [string | number, string | number];
 
 type customProps = {

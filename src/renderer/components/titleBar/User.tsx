@@ -1,14 +1,36 @@
-import { memo, useState } from "react";
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Tabs, Tab, Modal, ModalContent, ModalBody, useDisclosure } from "@nextui-org/react";
+import { memo, useEffect, useLayoutEffect } from "react";
+import { Avatar, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Tabs, Tab, Modal, ModalContent, ModalBody, useDisclosure } from "@nextui-org/react";
+
+import useStore from "store/index";
 
 import Account from "../login/account";
 import QrCode from "../login/qrCode";
-import Icon from "@assets/icon";
-import React from "react";
+import Icon from "assets/icon";
 
 export default memo(() => {
   // Modal
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  const netease = useStore((state) => ({
+    isLogin: state.netease.isLogin,
+    name: state.netease.name,
+  }));
+
+  // 网易云用户信息
+  let neteaseIcon, neteaseClick, neteaseName;
+  if (netease.isLogin) {
+    neteaseIcon = <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" className="h-6 w-6" />;
+    neteaseName = netease.name;
+    neteaseClick = () => {
+      // 打开用户主页
+    };
+  } else {
+    neteaseIcon = <Icon name="netease" size={[26, 26]} />;
+    neteaseName = "login";
+    neteaseClick = () => {
+      onOpen();
+    };
+  }
 
   return (
     <>
@@ -17,8 +39,8 @@ export default memo(() => {
           <Icon name="user" size={[22, 22]} className="no-region mx-1.5 cursor-pointer transition-all duration-1000 hover:fill-primary-400" />
         </DropdownTrigger>
         <DropdownMenu variant="flat" aria-label="menu">
-          <DropdownItem startContent={<Icon name="netease" size={[26, 26]} />} onClick={onOpen}>
-            login
+          <DropdownItem startContent={neteaseIcon} onClick={neteaseClick}>
+            {neteaseName}
           </DropdownItem>
           <DropdownItem startContent={<Icon name="qq" size={[26, 26]} />}>login</DropdownItem>
         </DropdownMenu>

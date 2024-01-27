@@ -8,9 +8,9 @@ import { SONGS, LISTS, ALBUM } from "./url";
 // const Lists = React.lazy(() => import("../page/lists"));
 // const Album = React.lazy(() => import("../page/album"));
 
-import Songs from "../page/songs";
-import Lists from "../page/lists";
-import Album from "../page/album";
+import Songs from "page/songs";
+import Lists from "page/lists";
+import Album from "page/album";
 
 const routes: RouteObject[] = [
   {

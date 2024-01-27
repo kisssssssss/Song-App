@@ -26,11 +26,13 @@ export const rendererConfig: Configuration = {
   resolve: {
     alias: {
       "@": resolve(__dirname, "src"),
-      "@assets": resolve(__dirname, "src/renderer/assets"),
-      "@routes": resolve(__dirname, "src/renderer/routes"),
-      "@page": resolve(__dirname, "src/renderer/page"),
-      "@component": resolve(__dirname, "src/renderer/component"),
-      "@store": resolve(__dirname, "src/renderer/store"),
+      assets: resolve(__dirname, "src/renderer/assets"),
+      routes: resolve(__dirname, "src/renderer/routes"),
+      page: resolve(__dirname, "src/renderer/page"),
+      components: resolve(__dirname, "src/renderer/components"),
+      store: resolve(__dirname, "src/renderer/store"),
+      service: resolve(__dirname, "src/renderer/service"),
+      utils: resolve(__dirname, "src/renderer/utils"),
     },
     extensions: [".js", ".ts", ".jsx", ".tsx", ".css"],
   },

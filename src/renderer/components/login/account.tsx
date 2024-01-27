@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useState } from "react";
 import { Input, Button } from "@nextui-org/react";
 import _ from "lodash";
-import useStore from "../../store";
+import useStore from "store/index";
 
 import Eye from "./eye";
 

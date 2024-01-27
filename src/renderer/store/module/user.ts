@@ -42,7 +42,8 @@ export const createUserSlice: StateCreator<User> = (set, get) => ({
     }
   },
   usePhoneLogin: async (phone: string, password: string) => {
-    const { ok, id, name, cookie } = await login_cellphone(phone, password);
+    const { ok, data } = await login_cellphone(phone, password);
+    const { id, name, cookie } = data;
     if (!ok) return false;
     // 保存用户信息
     set((draft: User): any => {

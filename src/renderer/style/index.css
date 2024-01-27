@@ -35,10 +35,6 @@ svg {
 
   /* 菜单高度 = 100vh - 标题栏 - 距离底部的距离 */
   height: calc(100vh - 40px - var(--b-height));
-
-  @media (min-width: 1024px) {
-    --b-height: 96px;
-  }
 }
 
 /* 菜单栏收缩时的宽度 */
@@ -52,6 +48,21 @@ svg {
   }
 }
 
+/* 播放器 */
+.player {
+  --base-width: 70px;
+
+  min-width: var(--base-width);
+
+  @media (min-width: 1280px) {
+    --base-width: 78px;
+  }
+}
+
+/* 内容区域高度 */
+.main {
+  height: calc(100vh - 40px);
+}
 
 /* 滚动的wrapper上下边缘内容虚化,通过animation的forwards属性实现 */
 .scroll-mask::before {

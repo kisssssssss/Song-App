@@ -18,8 +18,8 @@ const createWindow = (): void => {
   const win = new BrowserWindow({
     height: 700,
     width: 1024,
-    minWidth: 1024,
-    minHeight: 680,
+    // minWidth: 1024,
+    // minHeight: 680,
     center: true,
     frame: false,
     icon: path.join(__dirname, "../../public/icon.png"),

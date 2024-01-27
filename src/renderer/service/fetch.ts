@@ -1,18 +1,19 @@
-type Config = {
+type Config<T = any> = {
   init?: RequestInit;
-  responseHandle?: (res: any) => any;
+  responseHandle?: (res: any) => T;
 };
 
 export type defaultReturn = {
   ok: boolean;
+  data: any;
   msg?: any;
 };
 
 export const NETEASE_BASEURL = "https://netease-cloud-music-api-bice-five.vercel.app";
 
-export const NETEASE = <Response = any>(url: string, config?: Config): Promise<Response & defaultReturn> => {
+export const NETEASE = <Response = any>(url: string, config?: Config<Response>): Promise<{ ok: boolean; data: Response }> => {
   return (
-    fetch(NETEASE_BASEURL + url, config?.init)
+    fetch(NETEASE_BASEURL + url, { ...config?.init, credentials: "include" })
       // 判断网络请求是否成功
       .then((res) => {
         if (!res.ok) {
@@ -27,14 +28,14 @@ export const NETEASE = <Response = any>(url: string, config?: Config): Promise<R
         }
         return res;
       })
-      // 添加自定义结果处理
+      // 请求结果处理
       .then(config?.responseHandle || ((res) => res))
       // 添加请求成功字段
-      .then((res) => ({ ok: true, ...res }))
+      .then((res) => ({ ok: true, data: res }))
       // 处理错误
       .catch((error) => {
         console.error(error);
-        return { ok: false, msg: error };
+        return { ok: false, data: null };
       })
   );
 };

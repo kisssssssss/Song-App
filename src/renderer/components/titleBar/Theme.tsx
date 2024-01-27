@@ -2,7 +2,7 @@ import { memo, useEffect, useRef, useState } from "react";
 import { Popover, PopoverTrigger, PopoverContent } from "@nextui-org/react";
 import classNames from "classnames";
 
-import Icon from "@assets/icon";
+import Icon from "assets/icon";
 
 import useStore, { Data } from "../../store";
 

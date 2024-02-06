@@ -1,0 +1,25 @@
+/* 播放进度条 */
+.track {
+  border-left-width: 0 !important;
+  border-right-width: 0 !important;
+}
+
+/* 播放器控制面板宽度 */
+.control-width {
+  --left: 80px;
+
+  /* 100vw - 距离左边的距离 - 折叠按钮宽度 */
+  width: calc(100vw - var(--left) - 20px);
+}
+
+@media (min-width: 1024px) {
+  .control-width {
+    --left: 96px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .control-width {
+    --left: 112px;
+  }
+}

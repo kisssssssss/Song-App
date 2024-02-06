@@ -33,6 +33,7 @@ export const rendererConfig: Configuration = {
       store: resolve(__dirname, "src/renderer/store"),
       service: resolve(__dirname, "src/renderer/service"),
       utils: resolve(__dirname, "src/renderer/utils"),
+      types:resolve(__dirname,"src/renderer/@types")
     },
     extensions: [".js", ".ts", ".jsx", ".tsx", ".css"],
   },

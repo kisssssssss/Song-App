@@ -1,13 +1,13 @@
-import { NETEASE } from "../fetch";
+import { NETEASE } from '../fetch';
 
 export function login_cellphone(phone: string, password: string) {
-  return NETEASE<{ id: string; name: string; cookie: string }>("/login/cellphone", {
+  return NETEASE<{ id: string; name: string; cookie: string; avatar: string }>('/login/cellphone', {
     init: {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      credentials: "include",
+      credentials: 'include',
       body: JSON.stringify({
         phone,
         password,
@@ -17,6 +17,7 @@ export function login_cellphone(phone: string, password: string) {
       return {
         id: res.profile.userId,
         name: res.profile.nickname,
+        avatar: res.profile.avatarUrl,
         cookie: res.cookie,
       };
     },
@@ -44,5 +45,5 @@ export function getQrBase64(key: string) {
 }
 
 export function checkQrStatus(key: string) {
-  return NETEASE(`/login/qr/check?key=${key}&time=${new Date().getTime()}`, { init: { method: "POST" } });
+  return NETEASE(`/login/qr/check?key=${key}&time=${new Date().getTime()}`, { init: { method: 'POST' } });
 }

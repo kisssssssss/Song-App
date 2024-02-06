@@ -1,0 +1,94 @@
+/* 滚动的wrapper上下边缘内容虚化,通过animation的forwards属性实现 */
+.scroll-mask::before {
+  content: "";
+  animation: l-bottom .7s ease forwards;
+  @apply absolute left-0 right-0 top-0 z-10 h-4;
+}
+
+.scroll-mask::after {
+  content: "";
+  animation: l-top .7s ease forwards;
+  @apply absolute left-0 right-0 bottom-0 z-10 h-4;
+}
+
+@keyframes l-bottom {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    @apply bg-gradient-to-b from-[#E6E8EB];
+  }
+}
+
+@keyframes l-top {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    @apply bg-gradient-to-t from-[#E6E8EB];
+  }
+}
+
+.dark .scroll-mask::before {
+  animation-name: d-bottom;
+}
+
+.dark .scroll-mask::after {
+  animation-name: d-top;
+}
+
+@keyframes d-bottom {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    @apply bg-gradient-to-b from-[#191919];
+  }
+}
+
+@keyframes d-top {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    @apply bg-gradient-to-t from-[#191919];
+  }
+}
+
+.gray .scroll-mask::before {
+  animation-name: g-bottom;
+}
+
+.gray .scroll-mask::after {
+  animation-name: g-top;
+}
+
+@keyframes g-bottom {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    @apply bg-gradient-to-b from-[#424243];
+  }
+}
+
+@keyframes g-top {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    @apply bg-gradient-to-t from-[#424243];
+  }
+}

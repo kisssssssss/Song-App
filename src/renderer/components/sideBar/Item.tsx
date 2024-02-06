@@ -5,7 +5,7 @@ import classNames from "classnames";
 import Context from "./context";
 
 import { Tooltip } from "@nextui-org/react";
-import Icon, { IconName } from "assets/icon";
+import Icon, { IconName } from "components/icon";
 
 export type ItemProps = {
   icon?: IconName;

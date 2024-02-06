@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { Divider } from "@nextui-org/react";
 
-import Icon from "assets/icon";
+import Icon from "components/icon";
 import Theme from "./Theme";
 import User from "./User";
 

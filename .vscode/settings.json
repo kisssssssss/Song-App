@@ -4,12 +4,17 @@
     "asar",
     "btns",
     "cssnano",
+    "EASINGS",
+    "exhigh",
     "extralight",
     "fmkadmapgofadopljbjfkapdkoienihi",
     "immer",
+    "jyeffect",
+    "jymaster",
     "lmhkpmbekcpmknklioeibfkpmmfibljd",
     "Maximizable",
     "nextui",
+    "partialize",
     "qrcode",
     "reduxjs",
     "relocator",
@@ -28,6 +33,7 @@
     "assets": "${workspaceRoot}/src/renderer/assets",
     "routes": "${workspaceRoot}/src/renderer/routes",
     "service": "${workspaceRoot}/src/renderer/service",
-    "utils":"${workspaceRoot}/src/renderer/utils"
+    "utils":"${workspaceRoot}/src/renderer/utils",
+    "types":"${workspaceRoot}/src/renderer/@types"
   },
 }

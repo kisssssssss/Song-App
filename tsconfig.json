@@ -38,6 +38,9 @@
       ],
       "utils/*": [
         "./src/renderer/utils/*"
+      ],
+      "types": [
+        "./src/renderer/@types/*"
       ]
     },
     "jsx": "react-jsx"

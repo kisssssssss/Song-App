@@ -9,7 +9,7 @@ import { getItem, ItemProps } from "./Item";
 import { SONGS, LISTS, ALBUM } from "routes/url";
 
 import Scroll from "../scroll";
-import Icon from "assets/icon";
+import Icon from "components/icon";
 import { Divider } from "@nextui-org/react";
 
 export default memo(() => {
@@ -56,7 +56,7 @@ export default memo(() => {
         <Icon
           name={isMenuFolded ? "menuUnfold" : "menuFold"}
           size={[24, 24]}
-          className="absolute bottom-3 left-6 cursor-pointer hover:fill-primary-400"
+          className="absolute bottom-3 left-[20px] xl:left-[33px] cursor-pointer hover:fill-primary-400"
           onClick={() => setIsMenuFolded(!isMenuFolded)}
         />
       </div>

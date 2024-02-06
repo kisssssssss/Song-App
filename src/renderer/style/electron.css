@@ -1,0 +1,8 @@
+/* Electron-设置区域是否可以拖动 */
+.region {
+  -webkit-app-region: drag;
+}
+
+.no-region {
+  -webkit-app-region: no-drag;
+}

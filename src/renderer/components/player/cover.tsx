@@ -1,20 +1,36 @@
-import { memo } from "react";
-import classNames from "classnames";
+import { memo } from 'react';
+import classNames from 'classnames';
 
-import { Image } from "@nextui-org/react";
-import Icon from "assets/icon";
+import useStore from 'store/index';
 
-export default memo<{ mask: boolean }>(({ mask }) => {
+import Icon from 'components/icon';
+import { Image } from '@nextui-org/react';
+
+export default memo(() => {
+  const [isMenuFolded, isPlayerFolded, cover, playing, setPlayStatus] = useStore((state) => [
+    state.isMenuFolded,
+    state.isPlayerFolded,
+    state.playData.song.cover,
+    state.playData.playing,
+    state.setPlayStatus,
+  ]);
+
+  const sizeClass = 'h-[54px] w-[54px] lg:h-16 lg:w-16 xl:h-20 xl:w-20';
+
+  const MaskClass = classNames('group absolute left-0 top-0 z-10 hidden cursor-pointer rounded-small bg-zinc-500/30', sizeClass, {
+    'group-hover/play:block': isPlayerFolded && isMenuFolded,
+  });
+
   return (
-    <div className="group/play relative max-w-fit">
-      <Image isBlurred radius="sm" src="https://picsum.photos/64/64" className="ml-1.5 mt-2 h-12 lg:h-16 xl:h-20" />
-      <div
-        className={classNames(
-          "group absolute left-1.5 top-0 z-10 hidden h-12 w-12 cursor-pointer rounded-small bg-zinc-500/30 lg:h-16 lg:w-16 xl:h-20 xl:w-20",
-          { "group-hover/play:block": mask },
-        )}
-      >
-        <Icon name="play" width={36} height={36} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:fill-primary-500" />
+    <div className="group/play relative ml-[9px] mt-[3px] max-w-fit lg:ml-1 lg:mt-2 xl:ml-2 xl:mt-2">
+      <Image isBlurred radius="sm" src={cover} className={sizeClass} />
+      <div className={MaskClass}>
+        <Icon
+          size={[36, 36]}
+          name={playing ? 'play' : 'pause'}
+          onClick={() => setPlayStatus(!playing)}
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:fill-primary-500"
+        />
       </div>
     </div>
   );

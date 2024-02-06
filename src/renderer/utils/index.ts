@@ -1,18 +1,21 @@
+import React from 'react';
+
 // 图片裁剪
 export function cut(url: string, size: number | [number, number]): string {
-  let param: string = "";
-  if (typeof size === "number") {
+  let param: string = '';
+  if (typeof size === 'number') {
     param = `param=${size}y${size}`;
   } else if (Array.isArray(size)) {
     return `param=${size[0]}x${size[1]}`;
   }
-  return `${url}${url.includes('?') ? "&" : "?"}${param}`;
+  return `${url}${url.includes('?') ? '&' : '?'}${param}`;
 }
 
+// 格式化时间
 export function formatDuration(milliseconds: number): string {
   // 确保输入是非负数
   if (milliseconds < 0) {
-    return "00:00";
+    return '00:00';
   }
 
   // 计算分钟和秒数
@@ -21,8 +24,13 @@ export function formatDuration(milliseconds: number): string {
   const seconds = totalSeconds % 60;
 
   // 格式化成 "xx:xx"
-  const formattedMinutes = String(minutes).padStart(2, "0");
-  const formattedSeconds = String(seconds).padStart(2, "0");
+  const formattedMinutes = String(minutes).padStart(2, '0');
+  const formattedSeconds = String(seconds).padStart(2, '0');
 
   return `${formattedMinutes}:${formattedSeconds}`;
+}
+
+// 提取歌手名字
+export function getArtistNameString(artists: any[], separator?: string): string {
+  return artists.map((artist: any) => artist.name).join(separator || ' / ');
 }

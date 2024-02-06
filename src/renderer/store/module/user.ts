@@ -1,5 +1,9 @@
-import { StateCreator } from "zustand";
-import { login_cellphone, getQrKey } from "../../service";
+/**
+ * @file 与用户有关的信息
+ */
+
+import { StateCreator } from 'zustand';
+import { login_cellphone, getQrKey } from '../../service';
 
 export interface User {
   /** @description 网易云用户信息 */
@@ -14,45 +18,47 @@ export interface User {
     cookie: string;
     /** @description 手机号 */
     phone: string;
-    /** @description 手机号密码 */
-    phonePassword: string;
+    /** @description 头像 */
+    avatar: string;
   };
   /** @description 初始化用户信息 */
-  initUserProfile: () => void;
+  initUserProfile: (cookie?: string) => void;
   /** @description 手机号登录 */
   usePhoneLogin: (phone: string, password: string) => Promise<boolean>;
   /** @description 邮箱登录 */
   useEmailLogin: (phone: string, password: string) => Promise<boolean>;
   /** @description 二维码登录 */
   saveCookie: (cookie: string) => void;
+  /** @description 退出登录 */
+  exit: () => void;
 }
 
-export const createUserSlice: StateCreator<User> = (set, get) => ({
+export const createUserSlice: StateCreator<User, [['zustand/immer', never]]> = (set, get) => ({
   netease: {
     isLogin: false,
-    id: "",
-    name: "",
-    cookie: "",
-    phone: "",
-    phonePassword: "",
+    id: '',
+    name: '',
+    cookie: '',
+    phone: '',
+    avatar: '',
   },
-  initUserProfile: () => {
+  initUserProfile: (cookie?: string) => {
     if (get().netease.cookie.length > 0) {
       // 初始化用户信息
     }
   },
   usePhoneLogin: async (phone: string, password: string) => {
     const { ok, data } = await login_cellphone(phone, password);
-    const { id, name, cookie } = data;
+    const { id, name, cookie, avatar } = data;
     if (!ok) return false;
     // 保存用户信息
-    set((draft: User): any => {
+    set(draft => {
       draft.netease.isLogin = true;
       draft.netease.id = id;
       draft.netease.name = name;
       draft.netease.cookie = cookie;
       draft.netease.phone = phone;
-      draft.netease.phonePassword = password;
+      draft.netease.avatar = avatar;
     });
     return true;
   },
@@ -64,6 +70,16 @@ export const createUserSlice: StateCreator<User> = (set, get) => ({
       draft.netease.isLogin = true;
       draft.netease.cookie = cookie;
     });
+    // TODO: 二维码登录只能获取cookie，通过cookie获取用户信息
     get().initUserProfile();
+  },
+  exit: () => {
+    set((draft: User): any => {
+      draft.netease.isLogin = false;
+      draft.netease.cookie = '';
+      draft.netease.id = '';
+      draft.netease.name = '';
+      draft.netease.phone = '';
+    });
   },
 });

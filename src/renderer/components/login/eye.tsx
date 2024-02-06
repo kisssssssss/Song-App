@@ -1,5 +1,5 @@
 import { memo } from "react";
-import Icon from "assets/icon";
+import Icon from "components/icon";
 
 export default memo<{ status: boolean; click: () => void }>(({ status, click }) => {
   return (

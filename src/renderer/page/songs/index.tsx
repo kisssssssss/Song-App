@@ -19,7 +19,7 @@ const Songs = memo(() => {
 
   return (
     <Scroll config={{ scrollConfig: { scrollbar: { interactive: true } }, customConfig: { isDrag: true } }} className="mr-1 flex-grow py-2 pl-3 pr-2">
-      <div className="pb-16 pt-4">
+      <div className="pb-20 pt-4">
         <Recommender title="每日推荐歌曲" data={daily} />
         <Recommender title="推荐新歌曲" data={newly} />
       </div>

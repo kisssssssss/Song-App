@@ -26,7 +26,7 @@ const Icon = (props: React.SVGProps<SVGSVGElement> & customProps, ref: React.For
   // 获取svgId
   const [svgId, setSvgId] = useState<string>();
   const getSvgId = async () => {
-    setSvgId(`#${(await import(`./svg/${name}.svg`)).default.id}`);
+    setSvgId(`#${(await import(`../../assets/svg/${name}.svg`)).default.id}`);
   };
   useEffect(() => {
     getSvgId();

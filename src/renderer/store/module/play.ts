@@ -8,7 +8,7 @@ import { getSongUrl } from '../../service';
 import type { Song } from '../../@types';
 import type { Store } from '../index';
 
-export interface Play {
+export interface PlaySlice {
   /**
    * @description audi标签id
    * */
@@ -50,7 +50,7 @@ export interface Play {
   setPlayStatus: (status: boolean) => void;
 }
 
-export const createPlaySlice: StateCreator<Play, [['zustand/immer', never]]> = (set, get: () => Store) => ({
+export const createPlaySlice: StateCreator<PlaySlice, [['zustand/immer', never]]> = (set, get: () => Store) => ({
   audioId: 'audio',
   getAudio: () => {
     return document.getElementById(get().audioId) as HTMLAudioElement;

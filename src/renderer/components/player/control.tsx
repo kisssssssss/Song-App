@@ -51,7 +51,6 @@ export default memo(() => {
               size="sm"
               aria-label="progress"
               color="foreground"
-              showTooltip={true}
               classNames={{
                 track: 'bg-default-500/30 w-full track lg:h-1.5 xl:h-2',
                 filler: 'rounded-lg',

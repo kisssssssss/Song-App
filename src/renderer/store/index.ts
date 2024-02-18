@@ -2,12 +2,13 @@ import { create, StateCreator } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 import { devtools, persist } from 'zustand/middleware';
 
-import { createUserSlice, User } from './module/user';
-import { createSettingSlice, Setting } from './module/setting';
-import { createSongSlice, Song } from './module/song';
-import { createPlaySlice, Play } from './module/play';
+import { createUserSlice, UserSlice } from './module/user';
+import { createSettingSlice, SettingSlice } from './module/setting';
+import { createSongSlice, SongSlice } from './module/song';
+import { createPlaySlice, PlaySlice } from './module/play';
+import { createListSlice, ListSlice } from './module/list';
 
-export type Store = User & Setting & Song & Play;
+export type Store = UserSlice & SettingSlice & SongSlice & PlaySlice & ListSlice;
 
 const useMiddleware = (
   f: StateCreator<Store, [['zustand/immer', never], ['zustand/persist', Store], ['zustand/devtools', never]], [], Store>,
@@ -24,7 +25,8 @@ export default create<Store>()(
     ...createSettingSlice(...args),
     ...createSongSlice(...args),
     ...createPlaySlice(...args),
+    ...createListSlice(...args),
   })),
 );
 
-export { User, Setting, Song, Play };
+export { UserSlice, SettingSlice, SongSlice, PlaySlice };

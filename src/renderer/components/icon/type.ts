@@ -31,6 +31,6 @@ type IconName =
   | 'playerUnfold'
   | 'exit'
   | 'next'
-  | 'prev';
+  | 'prev'|"like";
 
 export default IconName;

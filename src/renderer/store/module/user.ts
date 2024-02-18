@@ -5,7 +5,7 @@
 import { StateCreator } from 'zustand';
 import { login_cellphone, getQrKey } from '../../service';
 
-export interface User {
+export interface UserSlice {
   /** @description 网易云用户信息 */
   netease: {
     /** @description 是否登录 */
@@ -33,7 +33,7 @@ export interface User {
   exit: () => void;
 }
 
-export const createUserSlice: StateCreator<User, [['zustand/immer', never]]> = (set, get) => ({
+export const createUserSlice: StateCreator<UserSlice, [['zustand/immer', never]]> = (set, get) => ({
   netease: {
     isLogin: false,
     id: '',
@@ -52,7 +52,7 @@ export const createUserSlice: StateCreator<User, [['zustand/immer', never]]> = (
     const { id, name, cookie, avatar } = data;
     if (!ok) return false;
     // 保存用户信息
-    set(draft => {
+    set((draft) => {
       draft.netease.isLogin = true;
       draft.netease.id = id;
       draft.netease.name = name;
@@ -66,7 +66,7 @@ export const createUserSlice: StateCreator<User, [['zustand/immer', never]]> = (
     return false;
   },
   saveCookie: async (cookie: string) => {
-    set((draft: User): any => {
+    set((draft): any => {
       draft.netease.isLogin = true;
       draft.netease.cookie = cookie;
     });
@@ -74,12 +74,15 @@ export const createUserSlice: StateCreator<User, [['zustand/immer', never]]> = (
     get().initUserProfile();
   },
   exit: () => {
-    set((draft: User): any => {
-      draft.netease.isLogin = false;
-      draft.netease.cookie = '';
-      draft.netease.id = '';
-      draft.netease.name = '';
-      draft.netease.phone = '';
+    set((draft): any => {
+      draft.netease = {
+        isLogin: false,
+        id: '',
+        name: '',
+        cookie: '',
+        phone: '',
+        avatar: '',
+      };
     });
   },
 });

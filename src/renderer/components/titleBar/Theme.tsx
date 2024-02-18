@@ -1,50 +1,56 @@
-import { memo, useEffect, useRef, useState } from "react";
-import { Popover, PopoverTrigger, PopoverContent } from "@nextui-org/react";
-import classNames from "classnames";
+import { memo, useCallback, useEffect, useRef, useState } from 'react';
+import { Popover, PopoverTrigger, PopoverContent } from '@nextui-org/react';
+import classNames from 'classnames';
 
-import Icon from "components/icon";
+import Icon from 'components/icon';
 
-import useStore, { Data } from "../../store";
+import useStore, { SettingSlice } from '../../store';
 
 export default memo(() => {
-  const updateComponent = useState("")[1];
-
   const light = useRef<HTMLDivElement>();
   const dark = useRef<HTMLDivElement>();
   const gray = useRef<HTMLDivElement>();
 
   const change = useStore((state) => state.changeTheme);
+  const currentTheme = useStore((state) => state.theme);
 
-  const changeTheme = (theme: Data["theme"]) => {
-    updateComponent(theme);
-    change(theme);
+  // 主题高亮
+  const highlightTheme = useCallback((theme: SettingSlice['theme']) => {
     switch (theme) {
-      case "dark":
-        light.current?.classList.remove("text-primary-600");
-        gray.current?.classList.remove("text-primary-600");
-        dark.current?.classList.add("text-primary-600");
+      case 'dark':
+        light.current?.classList.remove('text-primary-600');
+        gray.current?.classList.remove('text-primary-600');
+        dark.current?.classList.add('text-primary-600');
         break;
-      case "":
-        light.current?.classList.add("text-primary-600");
-        gray.current?.classList.remove("text-primary-600");
-        dark.current?.classList.remove("text-primary-600");
+      case '':
+        light.current?.classList.add('text-primary-600');
+        gray.current?.classList.remove('text-primary-600');
+        dark.current?.classList.remove('text-primary-600');
         break;
-      case "gray":
-        light.current?.classList.remove("text-primary-600");
-        gray.current?.classList.add("text-primary-600");
-        dark.current?.classList.remove("text-primary-600");
+      case 'gray':
+        light.current?.classList.remove('text-primary-600');
+        gray.current?.classList.add('text-primary-600');
+        dark.current?.classList.remove('text-primary-600');
         break;
     }
-  };
+  }, []);
+  useEffect(() => {
+    highlightTheme(currentTheme);
+  }, [currentTheme]);
 
-  let lightClass = classNames("w-full cursor-pointer rounded-md py-1 pl-3 hover:bg-default-300/60", {
-    " text-primary-600": document.documentElement.className === "",
+  // 更改主题
+  const changeTheme = useCallback((theme: SettingSlice['theme']) => {
+    change(theme);
+  }, []);
+
+  let lightClass = classNames('w-full cursor-pointer rounded-md py-1 pl-3 hover:bg-default-300/60', {
+    ' text-primary-600': document.documentElement.className === '',
   });
-  let darkClass = classNames("w-full cursor-pointer rounded-md py-1 pl-3 hover:bg-default-300/60", {
-    " text-primary-600": document.documentElement.className === "dark",
+  let darkClass = classNames('w-full cursor-pointer rounded-md py-1 pl-3 hover:bg-default-300/60', {
+    ' text-primary-600': document.documentElement.className === 'dark',
   });
-  let grayClass = classNames("w-full cursor-pointer rounded-md py-1 pl-3 hover:bg-default-300/60", {
-    " text-primary-600": document.documentElement.className === "gray",
+  let grayClass = classNames('w-full cursor-pointer rounded-md py-1 pl-3 hover:bg-default-300/60', {
+    ' text-primary-600': document.documentElement.className === 'gray',
   });
 
   return (
@@ -54,13 +60,13 @@ export default memo(() => {
       </PopoverTrigger>
       <PopoverContent className="block min-h-[60px] min-w-min max-w-[150px] select-none p-2 text-default-700">
         <p className="mb-1 ml-2 mt-1.5 text-left text-sm text-default-500/60">外观</p>
-        <div ref={light} className={lightClass} onClick={() => changeTheme("")}>
+        <div ref={light} className={lightClass} onClick={() => changeTheme('')}>
           白色
         </div>
-        <div ref={dark} className={darkClass} onClick={() => changeTheme("dark")}>
+        <div ref={dark} className={darkClass} onClick={() => changeTheme('dark')}>
           黑色
         </div>
-        <div ref={gray} className={grayClass} onClick={() => changeTheme("gray")}>
+        <div ref={gray} className={grayClass} onClick={() => changeTheme('gray')}>
           灰色
         </div>
         <p className="mb-2 ml-2 mt-1.5 text-sm text-default-500/60">主题颜色</p>

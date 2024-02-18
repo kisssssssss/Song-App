@@ -21,12 +21,12 @@
 
 /* 菜单栏收缩时的宽度 */
 .menu-base-width {
-  --base-width: 72px;
+  --base-width: 91px;
   width: var(--base-width);
 }
 
 @media (min-width: 1280px) {
   .menu-base-width {
-    --base-width: 96px;
+    --base-width: 115px;
   }
 }

@@ -1,4 +1,3 @@
-import React from 'react';
 
 // 图片裁剪
 export function cut(url: string, size: number | [number, number]): string {
@@ -30,7 +29,7 @@ export function formatDuration(milliseconds: number): string {
   return `${formattedMinutes}:${formattedSeconds}`;
 }
 
-// 提取歌手名字
+// 提取歌手名字，以字符串返回
 export function getArtistNameString(artists: any[], separator?: string): string {
   return artists.map((artist: any) => artist.name).join(separator || ' / ');
 }

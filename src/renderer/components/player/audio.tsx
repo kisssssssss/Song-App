@@ -6,6 +6,7 @@ export default memo(() => {
 
   useEffect(() => {
     pause();
+   
   }, []);
 
   return <audio id="audio" src={url} preload="auto" autoPlay={autoPlay} />;

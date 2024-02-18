@@ -14,7 +14,7 @@ export default memo<{ close: Function }>(({ close }) => {
   const saveCookie = useStore((state) => state.saveCookie);
 
   const create = async () => {
-    const { key } = (await getQrKey()).data;
+    const key = (await getQrKey()).data;
     if (key) {
       const { img } = (await getQrBase64(key)).data;
       if (img) {

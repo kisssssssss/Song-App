@@ -1,32 +1,33 @@
-import React from "react";
-import { Navigate, RouteObject } from "react-router-dom";
-
-import { SONGS, LISTS, ALBUM } from "./url";
+import { Navigate, RouteObject } from 'react-router-dom';
 
 // TODO: 懒加载时切换路由，页面会闪烁
 // const Songs = React.lazy(() => import("../page/songs"));
 // const Lists = React.lazy(() => import("../page/lists"));
 // const Album = React.lazy(() => import("../page/album"));
 
-import Songs from "page/songs";
-import Lists from "page/lists";
-import Album from "page/album";
+import Songs from 'page/songs_recommended';
+import Lists_Recommended from 'page/lists_recommended';
+import Album from 'page/album_recommended';
+import List_Detail from 'page/list_detail';
 
 const routes: RouteObject[] = [
   {
-    path: "/",
-    element: <Navigate to={SONGS} />,
+    path: '/',
+    element: <Navigate to={'/songs'} />,
   },
   {
-    path: SONGS,
+    path: '/songs',
     element: <Songs />,
   },
   {
-    path: LISTS,
-    element: <Lists />,
+    path: '/list',
+    children: [
+      { path: 'recommended', element: <Lists_Recommended /> },
+      { path: ':id', element: <List_Detail /> },
+    ],
   },
   {
-    path: ALBUM,
+    path: '/album',
     element: <Album />,
   },
 ];

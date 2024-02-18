@@ -2,26 +2,36 @@
  * @file 与歌曲有关的数据信息
  */
 
-import { StateCreator } from "zustand";
+import { StateCreator } from 'zustand';
 
-import { recommend_daily, recommend_new } from "service/index";
+import { recommend_daily, recommend_new, getLikeSong } from 'service/index';
+import { Song } from '../../@types';
+import { Store } from '..';
 
-export interface Song {
+export interface SongSlice {
   /**
    * @description 每日推荐歌曲
    * */
-  dailyRecommend: any[];
+  dailyRecommend: Song[];
   dailyRecommendUpdate: number;
   getDailyRecommend: () => any;
   /**
    * @description 推荐新歌曲
    * */
-  newRecommend: any[];
+  newRecommend: Song[];
   newRecommendUpdate: number;
   getNewRecommend: () => any;
+  /**
+   * @description 喜欢的音乐列表
+   * */
+  likeSongID: number[];
+  /**
+   * @description 更新喜欢的音乐列表
+   * */
+  updateLikeSongID: () => void;
 }
 
-export const createSongSlice: StateCreator<Song> = (set, get) => ({
+export const createSongSlice: StateCreator<SongSlice> = (set, get: () => Store) => ({
   dailyRecommend: [],
   dailyRecommendUpdate: 0,
   getDailyRecommend: async () => {
@@ -52,5 +62,9 @@ export const createSongSlice: StateCreator<Song> = (set, get) => ({
       }
     }
     return get().newRecommend;
+  },
+  likeSongID: [],
+  updateLikeSongID: async () => {
+    set({ likeSongID: (await getLikeSong(get().netease.id)).data });
   },
 });

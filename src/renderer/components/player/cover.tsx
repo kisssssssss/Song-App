@@ -2,6 +2,7 @@ import { memo } from 'react';
 import classNames from 'classnames';
 
 import useStore from 'store/index';
+import { cut } from '../../utils';
 
 import Icon from 'components/icon';
 import { Image } from '@nextui-org/react';
@@ -23,7 +24,7 @@ export default memo(() => {
 
   return (
     <div className="group/play relative ml-[9px] mt-[3px] max-w-fit lg:ml-1 lg:mt-2 xl:ml-2 xl:mt-2">
-      <Image isBlurred radius="sm" src={cover} className={sizeClass} />
+      <Image isBlurred radius="sm" src={cut(cover, 96)} className={sizeClass} />
       <div className={MaskClass}>
         <Icon
           size={[36, 36]}

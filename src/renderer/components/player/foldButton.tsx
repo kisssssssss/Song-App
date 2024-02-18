@@ -12,7 +12,7 @@ export default memo(() => {
   ]);
 
   const foldClass = classNames(
-    'group absolute bottom-0 h-full cursor-pointer border-r-1 border-divider bg-gradient-to-r from-content2 to-default-200/80 shadow-sm',
+    'group absolute bottom-0 h-full cursor-pointer border-r-1 border-divider bg-content2 shadow-sm transition-colors',
     { '-right-[20px] border': isPlayerFolded && isMenuFolded, 'right-0': !isPlayerFolded || !isMenuFolded },
     { 'rounded-lg': isMenuFolded, 'rounded-r-lg': !isMenuFolded },
   );

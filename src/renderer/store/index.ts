@@ -5,7 +5,7 @@ import { devtools, persist } from 'zustand/middleware';
 import { createUserSlice, UserSlice } from './module/user';
 import { createSettingSlice, SettingSlice } from './module/setting';
 import { createSongSlice, SongSlice } from './module/song';
-import { createPlaySlice, PlaySlice } from './module/play';
+import { createPlaySlice, PlaySlice } from './module/player';
 import { createListSlice, ListSlice } from './module/list';
 
 export type Store = UserSlice & SettingSlice & SongSlice & PlaySlice & ListSlice;
@@ -16,6 +16,7 @@ const useMiddleware = (
   immer(
     persist(devtools(f), {
       name: 'store',
+      partialize: (state) => Object.fromEntries(Object.entries(state).filter(([key]) => !['currentTime'].includes(key))),
     }),
   );
 

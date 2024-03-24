@@ -1,6 +1,6 @@
 import { memo, useCallback, useState } from 'react';
 import useStore from 'store/index';
-import { cut, formatDuration, getArtistNameString } from 'utils/index';
+import { cut, formatMillisecondTime, getArtistNameString } from 'utils/index';
 import type { Song } from '../../@types/index';
 
 import Icon from 'components/icon';
@@ -12,6 +12,7 @@ type PropsType = {
 
 export default memo<PropsType>(({ title, data }) => {
   const [play] = useStore((state) => [state.play]);
+  const [currentPlayId] = useStore((state) => [state.playData.song.id]);
 
   const [page, setPage] = useState<number>(1);
   const addPage = useCallback(() => {
@@ -56,7 +57,16 @@ export default memo<PropsType>(({ title, data }) => {
                 <span className="ml-1 mt-1 truncate text-xs text-default-600/80">{getArtistNameString(song.artist)}</span>
               </div>
               <div className="flex h-full max-w-[96px] flex-grow flex-row-reverse items-center justify-center transition-all">
-                <span className="text-sm text-default-400/80">{formatDuration(song.duration)}</span>
+                {/* 当播放当前歌曲时，不显示时间，改为显示播放动画 */}
+                {currentPlayId === song.id ? (
+                  <div className="music">
+                    <div className="music-bar 1"></div>
+                    <div className="music-bar 2"></div>
+                    <div className="music-bar 3"></div>
+                  </div>
+                ) : (
+                  <span className="text-sm text-default-400/80">{formatMillisecondTime(song.duration)}</span>
+                )}
               </div>
             </div>
           ))}

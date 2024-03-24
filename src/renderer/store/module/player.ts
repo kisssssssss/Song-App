@@ -31,6 +31,8 @@ export interface PlaySlice {
     url: string;
     // 歌词
     lyric: string[];
+    // 时长
+    duration: number;
   };
   /**
    * @description 设置播放状态
@@ -48,6 +50,12 @@ export interface PlaySlice {
    * @description 简化了播放和暂停功能, 内部调用 play 和 pause, 传入 true 播放, false 暂停
    * */
   setPlayStatus: (status: boolean) => void;
+  /**
+   * @description 播放时间
+   * */
+  currentTime: number;
+  setCurrentTime: (time: number) => void;
+  setAudioCurrentTime: (time: number) => void;
 }
 
 export const createPlaySlice: StateCreator<PlaySlice, [['zustand/immer', never]]> = (set, get: () => Store) => ({
@@ -67,6 +75,7 @@ export const createPlaySlice: StateCreator<PlaySlice, [['zustand/immer', never]]
     },
     url: '',
     lyric: [],
+    duration: 0,
   },
   setPlaying: (val) => {
     set((draft) => {
@@ -85,6 +94,7 @@ export const createPlaySlice: StateCreator<PlaySlice, [['zustand/immer', never]]
         draft.playData.playing = autoPlay;
         draft.playData.url = '';
         draft.playData.lyric = [];
+        draft.playData.duration = song.duration;
       });
       // 获取歌曲url不阻塞歌曲信息显示
       getSongUrl(song.id).then(({ data }) => {
@@ -109,5 +119,12 @@ export const createPlaySlice: StateCreator<PlaySlice, [['zustand/immer', never]]
   setPlayStatus: (status) => {
     const { play, pause } = get();
     status ? play() : pause();
+  },
+  currentTime: 0,
+  setCurrentTime: (currentTime) => {
+    set({ currentTime });
+  },
+  setAudioCurrentTime: (currentTime) => {
+    get().getAudio().currentTime = currentTime;
   },
 });

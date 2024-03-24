@@ -23,7 +23,7 @@ export default memo(() => {
   });
 
   return (
-    <div className="group/play relative ml-[9px] mt-[3px] max-w-fit lg:ml-1 lg:mt-2 xl:ml-2 xl:mt-2">
+    <div className="group/play relative ml-[9px] mt-[3px] max-w-fit rounded-small bg-default-200 lg:ml-1 lg:mt-2 xl:ml-2 xl:mt-2">
       <Image isBlurred radius="sm" src={cut(cover, 96)} className={sizeClass} />
       <div className={MaskClass}>
         <Icon

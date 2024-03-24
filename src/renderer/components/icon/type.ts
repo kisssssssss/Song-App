@@ -31,6 +31,9 @@ type IconName =
   | 'playerUnfold'
   | 'exit'
   | 'next'
-  | 'prev'|"like";
+  | 'prev'
+  | 'like'
+  | 'fullScreenExit'
+  | 'fullScreenEnter';
 
 export default IconName;

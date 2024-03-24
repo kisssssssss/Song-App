@@ -20,7 +20,9 @@ export interface ListSlice {
 export const createListSlice: StateCreator<ListSlice> = (set, get: () => Store) => ({
   list: [],
   updateList: async () => {
-    set({ list: (await getList(get().netease.id)).data || [] });
+    if (get().netease.isLogin) {
+      set({ list: (await getList(get().netease.id)).data || [] });
+    }
   },
   getMyList: (listId: number) => {
     return get().list.find((item) => item.id === listId);

@@ -1,6 +1,7 @@
-
 // 图片裁剪
 export function cut(url: string, size: number | [number, number]): string {
+  if (url.length === 0) return '';
+
   let param: string = '';
   if (typeof size === 'number') {
     param = `param=${size}y${size}`;
@@ -10,23 +11,14 @@ export function cut(url: string, size: number | [number, number]): string {
   return `${url}${url.includes('?') ? '&' : '?'}${param}`;
 }
 
-// 格式化时间
-export function formatDuration(milliseconds: number): string {
-  // 确保输入是非负数
-  if (milliseconds < 0) {
-    return '00:00';
-  }
-
-  // 计算分钟和秒数
-  const totalSeconds = Math.floor(milliseconds / 1000);
-  const minutes = Math.floor(totalSeconds / 60);
-  const seconds = totalSeconds % 60;
-
-  // 格式化成 "xx:xx"
-  const formattedMinutes = String(minutes).padStart(2, '0');
-  const formattedSeconds = String(seconds).padStart(2, '0');
-
-  return `${formattedMinutes}:${formattedSeconds}`;
+// 格式化当前时间为 MM:SS
+export function formatSecondTime(secondTime: number) {
+  let minute = String(Math.floor(secondTime / 60)).padStart(2, '0');
+  let second = String(secondTime % 60).padStart(2, '0');
+  return minute + ':' + second;
+}
+export function formatMillisecondTime(milliseconds: number): string {
+  return formatSecondTime(Math.floor(milliseconds / 1000));
 }
 
 // 提取歌手名字，以字符串返回
